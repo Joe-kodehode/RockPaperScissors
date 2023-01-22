@@ -5,27 +5,40 @@ const scissorsAnswer = document.querySelector("#scissors-btn");
 const paperAnswer = document.querySelector("#paper-btn");
 
 function App() {
-  possibilities = ["Rock", "Paper", "Scissors"];
+  const possibilities = ["Rock", "Paper", "Scissors"];
+  let winLossDraw = "";
 
-  const victor = () => {
-    let userAnswer = "";
+  // Function for finding the winner, called when user chooses a button
+  const victor = (userAnswer) => {
     let aiAnswer = possibilities[Math.floor(Math.random() * 3)];
 
+    // Logic for deciding winner/loser and returning "win" or "loss"
     if (userAnswer === aiAnswer) {
-      return "Draw";
-    }
-    if (
-      (userAnswer === "Rock" && aiAnswer === "Rock") ||
-      (userAnswer === "Scissors" && aiAnswer === "Scissors") ||
-      (userAnswer === "Paper" && aiAnswer === "Paper")
+      winLossDraw = "Draw";
+    } else if (
+      (userAnswer === "Rock" && aiAnswer === "Scissors") ||
+      (userAnswer === "Scissors" && aiAnswer === "Paper") ||
+      (userAnswer === "Paper" && aiAnswer === "Rock")
     ) {
-      return "Win";
+      winLossDraw = "Win";
     } else {
-      return "Loss";
+      winLossDraw = "Loss";
     }
   };
 
-  return <div className="App"></div>;
+  return (
+    <>
+      <button className="btn" onClick={() => victor("Rock")}>
+        Rock
+      </button>
+      <button className="btn" onClick={() => victor("Paper")}>
+        Paper
+      </button>
+      <button className="btn" onClick={() => victor("Scissors")}>
+        Scissors
+      </button>
+    </>
+  );
 }
 
 export default App;
