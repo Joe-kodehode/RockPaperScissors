@@ -1,5 +1,4 @@
 import { useState } from "react";
-
 import "./App.css";
 
 function App() {
@@ -17,7 +16,6 @@ function App() {
       setResult("Draw");
     } else if (userAnswer === "Rock" && aiAnswer === "Scissors") {
       setPlayerPick("Rock");
-      set;
       setResult("Win");
       setScore((score += 1));
     } else if (userAnswer === "Scissors" && aiAnswer === "Paper") {
@@ -46,31 +44,16 @@ function App() {
   console.log("result:  " + result);
   console.log("score:  " + score);
 
+  const UserButton = (props) => {
+    return <button onClick={determineWinner(props.name)}>{props.name}</button>;
+  };
+
   return (
     <>
-      <button
-        id="rock-btn"
-        className="btn"
-        onClick={() => determineWinner("Rock")}
-      >
-        Rock
-      </button>
+      <UserButton name="Rock" />
+      <UserButton name="Paper" />
+      <UserButton name="Scissors" />
 
-      <button
-        id="paper-btn"
-        className="btn"
-        onClick={() => determineWinner("Paper")}
-      >
-        Paper
-      </button>
-
-      <button
-        id="scissors-btn"
-        className="btn"
-        onClick={() => determineWinner("Scissors")}
-      >
-        Scissors
-      </button>
       <p id="score-board">Score: {score}</p>
       <p>You picked: {playerPick}</p>
       <p>AI Picked: {compPick}</p>
