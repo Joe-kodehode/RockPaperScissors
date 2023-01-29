@@ -7,11 +7,13 @@ function App() {
   const [score, setScore] = useState(0);
   const [playerPick, setPlayerPick] = useState();
   const [compPick, setCompPick] = useState();
+  const [newGame, setNewGame] = useState(true);
 
   const determineWinner = (userAnswer) => {
     let aiAnswer = possibilities[Math.floor(Math.random() * 3)];
     setCompPick(aiAnswer);
     setPlayerPick(userAnswer);
+    setNewGame(false);
 
     if (userAnswer === aiAnswer) {
       setResult("Draw");
@@ -27,6 +29,7 @@ function App() {
       setScore(score - 1);
     }
   };
+
   const UserButton = (props) => {
     return (
       <button onClick={() => determineWinner(props.name)}>{props.name}</button>
@@ -35,14 +38,21 @@ function App() {
 
   return (
     <>
-      <UserButton name="Rock" />
-      <UserButton name="Paper" />
-      <UserButton name="Scissors" />
-
       <p id="score-board">Score: {score}</p>
-      <p>You picked: {playerPick}</p>
-      <p>AI Picked: {compPick}</p>
-      <p>{result}</p>
+      {newGame ? (
+        <>
+          <UserButton name="Rock" />
+          <UserButton name="Paper" />
+          <UserButton name="Scissors" />
+        </>
+      ) : (
+        <>
+          <p>You picked: {playerPick}</p>
+          <p>AI Picked: {compPick}</p>
+          <p>{result}</p>
+          <button onClick={() => setNewGame(true)}>Play Again</button>
+        </>
+      )}
     </>
   );
 }
