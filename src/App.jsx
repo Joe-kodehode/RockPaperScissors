@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./App.css";
+import styled from "styled-components";
 
 function App() {
   const possibilities = ["Rock", "Paper", "Scissors"];
@@ -30,21 +31,49 @@ function App() {
     }
   };
 
+  const StyledButton = styled.button`
+    background: white;
+    border-radius: 50%;
+    height: 194px;
+    width: 194px;
+    border: solid 21.56px hsl(230 89% 65%);
+    cursor: pointer;
+  `;
+
   const UserButton = (props) => {
     return (
-      <button onClick={() => determineWinner(props.name)}>{props.name}</button>
+      <StyledButton onClick={() => determineWinner(props.name)}>
+        {props.name}
+      </StyledButton>
     );
   };
 
   return (
     <>
-      <p id="score-board">Score: {score}</p>
+      <div className="scoreboard">
+        <div className="title bold">
+          <p>
+            ROCK,
+            <br />
+            PAPER, <br />
+            SCISSORS
+          </p>
+          {/* <p>ROCK,</p>
+          <p>PAPER,</p>
+          <p>SCISSORS</p> */}
+        </div>
+
+        <div className="score-container">
+          <p className="semi-bold score-text">SCORE</p>
+          <p className="score score-text bold">{score}</p>
+        </div>
+      </div>
       {newGame ? (
-        <>
+        <div className="player-selection">
           <UserButton name="Rock" />
           <UserButton name="Paper" />
           <UserButton name="Scissors" />
-        </>
+        </div>
       ) : (
         <>
           <p>You picked: {playerPick}</p>
