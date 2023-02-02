@@ -52,12 +52,9 @@ function App() {
     <>
       <div className="scoreboard">
         <div className="title bold">
-          <p>
-            ROCK,
-            <br />
-            PAPER, <br />
-            SCISSORS
-          </p>
+          <p>ROCK,</p>
+          <p>PAPER,</p>
+          <p>SCISSORS</p>
           {/* <p>ROCK,</p>
           <p>PAPER,</p>
           <p>SCISSORS</p> */}
