@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import styled from "styled-components";
+import triangle from "./images/bg-triangle.svg";
 
 function App() {
   const possibilities = ["Rock", "Paper", "Scissors"];
@@ -32,7 +33,8 @@ function App() {
   };
 
   const StyledButton = styled.button`
-    background: white;
+    background: transparent;
+    color: hsl(229 25% 31%);
     border-radius: 50%;
     height: 194px;
     width: 194px;
@@ -66,11 +68,13 @@ function App() {
         </div>
       </div>
       {newGame ? (
-        <div className="player-selection">
-          <UserButton name="Rock" />
-          <UserButton name="Paper" />
-          <UserButton name="Scissors" />
-        </div>
+        <>
+          <div className="player-selection">
+            <UserButton name="Rock" />
+            <UserButton name="Paper" />
+            <UserButton name="Scissors" />
+          </div>
+        </>
       ) : (
         <>
           <p>You picked: {playerPick}</p>

@@ -9,7 +9,7 @@
   width: 100%;
   height: 100%;
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 3fr;
   padding: 5%;
 }
 
@@ -32,6 +32,7 @@ body {
   max-width: 704px;
   max-height: 154px;
   justify-self: center;
+  align-self: center;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -60,7 +61,11 @@ body {
 }
 
 .player-selection {
-  justify-self: center;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-template-rows: auto auto;
+  place-content: center;
+  background: url("./images/bg-triangle.svg") center no-repeat;
 }
 
 .selection-btn {
