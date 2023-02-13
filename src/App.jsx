@@ -1,10 +1,9 @@
 import { useState } from "react";
 import "./App.css";
-import styled from "styled-components";
-import triangle from "./images/bg-triangle.svg";
+import UserButton from "./components/UserButton";
 
 function App() {
-  const possibilities = ["Rock", "Paper", "Scissors"];
+  const possibilities = ["rock", "paper", "scissors"];
   const [result, setResult] = useState("");
   const [score, setScore] = useState(0);
   const [playerPick, setPlayerPick] = useState();
@@ -20,9 +19,9 @@ function App() {
     if (userAnswer === aiAnswer) {
       setResult("Draw");
     } else if (
-      (userAnswer === "Rock" && aiAnswer === "Scissors") ||
-      (userAnswer === "Scissors" && aiAnswer === "Paper") ||
-      (userAnswer === "Paper" && aiAnswer === "Rock")
+      (userAnswer === "rock" && aiAnswer === "scissors") ||
+      (userAnswer === "scissors" && aiAnswer === "paper") ||
+      (userAnswer === "paper" && aiAnswer === "rock")
     ) {
       setResult("Win");
       setScore(score + 1);
@@ -30,24 +29,6 @@ function App() {
       setResult("Loss");
       setScore(score - 1);
     }
-  };
-
-  const StyledButton = styled.button`
-    background: transparent;
-    color: hsl(229 25% 31%);
-    border-radius: 50%;
-    height: 194px;
-    width: 194px;
-    border: solid 21.56px hsl(230 89% 65%);
-    cursor: pointer;
-  `;
-
-  const UserButton = (props) => {
-    return (
-      <StyledButton onClick={() => determineWinner(props.name)}>
-        {props.name}
-      </StyledButton>
-    );
   };
 
   return (
@@ -70,18 +51,36 @@ function App() {
       {newGame ? (
         <>
           <div className="player-selection">
-            <UserButton name="Rock" />
-            <UserButton name="Paper" />
-            <UserButton name="Scissors" />
+            <UserButton
+              onClick={() => determineWinner("rock")}
+              name="rock"
+            />
+            <UserButton
+              onClick={() => determineWinner("paper")}
+              name="paper"
+              
+            />
+            <UserButton
+              onClick={() => determineWinner("scissors")}
+              name="scissors"
+              
+            />
           </div>
         </>
       ) : (
-        <>
-          <p>You picked: {playerPick}</p>
-          <p>AI Picked: {compPick}</p>
+        <div className="results">
+          <div>
+            <p>You picked:</p>
+            <UserButton name={playerPick} large></UserButton>
+          </div>
+
+          <div>
+            <p>AI Picked:</p>
+            <UserButton name={compPick} large></UserButton>
+          </div>
           <p>{result}</p>
           <button onClick={() => setNewGame(true)}>Play Again</button>
-        </>
+        </div>
       )}
     </>
   );
