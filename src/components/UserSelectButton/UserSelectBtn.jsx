@@ -1,4 +1,4 @@
-import StyledButton from "./UserButton.style";
+import StyledButton from "./UserSelectBtn.style";
 import rock from "../../images/icon-rock.svg";
 import paper from "../../images/icon-paper.svg";
 import scissors from "../../images/icon-scissors.svg";

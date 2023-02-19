@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes, css } from "styled-components";
 
 export default styled.button`
   height: 194px;
@@ -11,6 +11,9 @@ export default styled.button`
 
   ${({ result }) => (result ? "transform: scale(1.5);" : "")}
   ${({ result }) => (result ? "margin: calc(194px/4);" : "")}
+  ${({ result }) => (result ? "cursor: auto;" : "")}
+
+  /* Transition */
 
 
   /* The default image is too small for the project, scaling it up here */
