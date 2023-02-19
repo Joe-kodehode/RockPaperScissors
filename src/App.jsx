@@ -51,35 +51,28 @@ function App() {
       {newGame ? (
         <>
           <div className="player-selection">
-            <UserButton
-              onClick={() => determineWinner("rock")}
-              name="rock"
-            />
-            <UserButton
-              onClick={() => determineWinner("paper")}
-              name="paper"
-              
-            />
+            <UserButton onClick={() => determineWinner("rock")} name="rock" />
+            <UserButton onClick={() => determineWinner("paper")} name="paper" />
             <UserButton
               onClick={() => determineWinner("scissors")}
               name="scissors"
-              
             />
           </div>
         </>
       ) : (
         <div className="results">
-          <div>
+          <div className="result">
             <p>You picked:</p>
-            <UserButton name={playerPick} large></UserButton>
+            <UserButton name={playerPick} result></UserButton>
           </div>
-
           <div>
-            <p>AI Picked:</p>
-            <UserButton name={compPick} large></UserButton>
+            <p>{result}</p>
+            <button onClick={() => setNewGame(true)}>Play Again</button>
           </div>
-          <p>{result}</p>
-          <button onClick={() => setNewGame(true)}>Play Again</button>
+          <div className="result">
+            <p>AI Picked:</p>
+            <UserButton name={compPick} result></UserButton>
+          </div>
         </div>
       )}
     </>
